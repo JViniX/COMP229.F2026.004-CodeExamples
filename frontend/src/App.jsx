@@ -4,11 +4,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
+import DemoComponent from './DemoComponent.jsx';
+import DemoComponent2 from './DemoCompoment2.jsx'
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <DemoComponent />
+      <DemoComponent2 />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -115,6 +120,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+
     </>
   )
 }
