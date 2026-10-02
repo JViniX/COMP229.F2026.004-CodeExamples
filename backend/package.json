@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "COMP229 Backend Code Example",
+  "keywords": [
+    "COMP229",
+    "Express",
+    "MongoDb",
+    "Node"
+  ],
+  "license": "MIT",
+  "author": "Julio Vinicius",
+  "type": "commonjs",
+  "scripts": {
+    "start": "server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
