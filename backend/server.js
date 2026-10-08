@@ -1,4 +1,7 @@
 const connect = require('express');
+let configDB = require('./config/db');
+
+configDB();
 
 const app = connect();
 
