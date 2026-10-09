@@ -1,50 +1,81 @@
-const connect = require('express');
 
-const app = connect();
+let configDB = require('./config/db');
+let app = require('./config/express');
+var http = require('http');
+var debug = require('debug')('comp229:server');
 
-function logger(req, res, next){
-    console.log(req.method, req.url);
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
-    next();
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+configDB();
+
+var server = http.createServer(app);
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
 }
 
-function helloWorld(req, res, next) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.send('Hello World');
-};
+/**
+ * Event listener for HTTP server "error" event.
+ */
 
-function goodBye(req, res, next) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.send('Good bye');
-};
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
 
-function notfound(req, res, next) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.send('Not Found');
-};
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
 
-const temp = {
-    name: "John Smith",
-    email: "john@smith.ca"
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
 }
-function getUser(req, res, next){
 
-    res.json(temp);
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+
+  console.log('==== The app is running on http://localhost:' + bind );
+  debug('Listening on ' + bind);
 }
-
-app.use(logger);
-app.use('/hello', helloWorld);
-app.use('/goodbye', goodBye);
-app.use('/getuser', getUser)
-
-app.get('/api/users/:id', (req, res, next) => {
-    console.log("===> User ID: " + req.params.Id);
-
-    res.send("===> User ID: " + req.params.Id);
-})
-
-app.use(notfound);
-
-app.listen(3000);
-
-console.log('Server running at http://localhost:3000/');
