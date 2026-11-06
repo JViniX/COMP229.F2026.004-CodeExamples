@@ -6,6 +6,8 @@ var cors = require('cors');
 // Import the routers
 var indexRouter = require('../app/routers/index');
 var projectsRouter = require('../app/routers/projects');
+var usersRouter = require('../app/routers/users');
+var authRouter = require('../app/routers/auth');
 
 // Config Express
 const app = express();
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 // Routers
 app.use('/', indexRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
 
 
 // catch 404 and forward to error handler
