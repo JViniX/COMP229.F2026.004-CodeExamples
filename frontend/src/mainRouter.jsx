@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom'
 
-import Home from './Pages/Home';
-import AboutMe from './Pages/AboutMe';
-import Projects from "./Pages/Projects";
-import Services from "./Pages/Services";
-import Layout from "./Components/Layout";
-import NotFound from "./Pages/NotFound";
+import Home from './pages/Home';
+import AboutMe from './pages/AboutMe';
+import Projects from "./pages/Projects";
+import Services from "./pages/Services";
+import Layout from "./components/Layout";
+import NotFound from "./pages/NotFound";
 
 function MainRouter (){
     return(
