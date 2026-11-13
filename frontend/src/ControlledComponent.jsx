@@ -12,7 +12,6 @@ export default function ControlledComponent() {
             <label>
                 Input Value:
                 <input type="text" value={inputValue} onChange={handleChange} />
-                <input type="text" value={inputValue} onChange={handleChange} />
             </label>
             <p>Input Value: {inputValue}</p>
         </form>

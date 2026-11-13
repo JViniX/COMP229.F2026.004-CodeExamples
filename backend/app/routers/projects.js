@@ -4,14 +4,14 @@ var router = express.Router();
 var projectsController = require('../controllers/projects');
 var authController = require('../controllers/auth');
 
-router.get('/', authController.logtoken, authController.validateToken, projectsController.projectsList);
-router.get('/:id', authController.validateToken,projectsController.getByID);
+router.get('/', projectsController.projectsList);
+router.get('/:id', projectsController.getByID);
 
-router.put('/:id', authController.validateToken,projectsController.processEdit);
+router.put('/:id', projectsController.processEdit);
 
-router.delete('/:id',authController.validateToken, projectsController.processDelete);
+router.delete('/:id', projectsController.processDelete);
 
-router.post('/',authController.validateToken, projectsController.processAdd);
+router.post('/', projectsController.processAdd);
 
 
 module.exports = router;
