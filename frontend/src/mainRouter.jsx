@@ -8,6 +8,7 @@ import Services from "./pages/Services";
 import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound";
 import ListProject from "./components/projects/ListProjects";
+import AddProject from "./components/projects/AddProject";
 
 function MainRouter (){
     return(
@@ -19,6 +20,7 @@ function MainRouter (){
                 <Route exact path="/projects" element={<Projects />} />
                 <Route exact path="/services" element={<Services />} />
                 <Route exact path="/projects/list" element={<ListProject />} />
+                <Route exact path="/projects/add" element={<AddProject />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             
