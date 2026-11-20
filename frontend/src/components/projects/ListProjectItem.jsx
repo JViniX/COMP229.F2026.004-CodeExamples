@@ -31,7 +31,7 @@ function ListProjectItem({ project, onRemove }) {
             <td className="text-center"> {project.completion ? new Date(project.completion).toLocaleDateString() : ''} </td>
             <td className="text-center"> {project.description || ''} </td>
             <td className="text-center">
-                <Link className="btn bg-primary btn-primary btn-sm" to={'/project/edit/' + project.id}>
+                <Link className="btn bg-primary btn-primary btn-sm" to={'/projects/edit/' + project.id}>
                     <i className="fas fa-pencil-alt"></i>
                 </Link>
             </td>
