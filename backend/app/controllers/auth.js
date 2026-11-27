@@ -18,6 +18,7 @@ module.exports.signin = async function (req, res, next) {
         let payload = {
             id: user._id,
             email: user.email,
+            username: user.fullName,
             admin: user.admin
         }
 
@@ -43,6 +44,7 @@ module.exports.signin = async function (req, res, next) {
 
 module.exports.logtoken = async function (req, res, next) {
     console.log(req.headers);
+    console.log(req.auth);
     next();
 }
 
